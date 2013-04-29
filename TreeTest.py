@@ -103,36 +103,8 @@ class Node:
             self.left.delete_branch(value)
          if self.right != None:
              self.right.delete_branch(value)
-
-
-        
-           
-
-        
-        
-
 #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""#
 #_______________________________________________________________________#
-"""
-def test():
-    n1 = Node(1)
-    n1.add_left(Node(2))
-    n1.add_right(Node(3))
-    n1.left.add_left(Node(7))
-    return n1
-n1.add_left(Node(2))
-n1.add_right(Node(3))
-n1.left.add_left(Node(4))
-n1.left.add_right(Node(5))
-n2=Node(11)
-n2.add_right(Node(12))
-n2.right=n1
-n1.add_value(Node(4))
-n1.add_value(Node(20))
-n1.print_for_graphviz()
-
-"""
-
 n=input("Length=")
 z=[]
 a=0
