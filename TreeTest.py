@@ -120,8 +120,6 @@ def test():
     n1.add_right(Node(3))
     n1.left.add_left(Node(7))
     return n1
-
-n1= Node(5)
 n1.add_left(Node(2))
 n1.add_right(Node(3))
 n1.left.add_left(Node(4))
