@@ -1,10 +1,6 @@
 class Tree:
     def __init__(self):
         self.root = None
-
-    
-
-
 class Node:
     def __init__(self, value):
         self.value = value
@@ -13,19 +9,23 @@ class Node:
         self.parent = None
 
     def add_left(self,node):
+        #add left element
         self.left=node
         node.parent = self
         
 
     def add_right(self,node):
+        #add right element
         self.right=node
         node.parent = self
 
     def __repr__(self):
+        #Output element 
         return "<Node, value=%s>" % self.value
         
 
     def subtree(self, ntabs = 0):
+        #Output tree console
         for i in range(ntabs):
             print "\t",
         print self.value
@@ -36,6 +36,7 @@ class Node:
             self.right.subtree(ntabs + 1)
 
     def print_for_graphviz(self):
+        #Output for graphviz 
         
         if self.parent == None:
             parent_value = None
@@ -50,6 +51,7 @@ class Node:
             self.right.print_for_graphviz()
 
     def add_value(self,node):
+        # Add element middle tree
         if node.value>self.value:
             if self.right==None:
                 self.add_right(node)
@@ -63,6 +65,7 @@ class Node:
 
     
     def write_for_graphviz(self,f):
+        #Def for write file
             
             if self.parent == None:
                 parent_value = None
@@ -80,6 +83,7 @@ class Node:
                 self.right.write_for_graphviz(f)
                 
     def write_file(self):
+        #Write file for graphviz(tree.txt)
         f=open('tree.txt','w')
         f.write("digraph G{ ")
         self.write_for_graphviz(f)
@@ -87,7 +91,8 @@ class Node:
         f.close()
 
 
-    def delete_branch(self, value):
+    def delete_element(self, value):
+        #Delite element
        if self.value == value:
            if self.parent != None:
                if self.value > self.parent.value:
@@ -100,9 +105,9 @@ class Node:
                    self.parent.add_value(self.left)
        else:
          if self.left != None:
-            self.left.delete_branch(value)
+            self.left.delete_element(value)
          if self.right != None:
-             self.right.delete_branch(value)
+             self.right.delete_element(value)
 #"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""#
 #_______________________________________________________________________#
 n=input("Length=")
