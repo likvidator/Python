@@ -27,8 +27,8 @@ class Node:
     def subtree(self, ntabs = 0):
         #Output tree console
         for i in range(ntabs):
-            print "\t",
-        print self.value
+            print "/n",
+        print 'self.value'
         
         if self.left != None:
             self.left.subtree(ntabs + 1)

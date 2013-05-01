@@ -1,8 +1,4 @@
 class Hash:
-    def __init__(self):
+    def __init__(self,value):
         self.key=None
-        self.value=None
-    def add_hash(self,node):
-        
-        
-    
+        self.value=value
