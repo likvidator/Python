@@ -19,5 +19,11 @@ class Hash:
             print "True"
         else:
             print "No Delite"
+    def search(self,value):
+        key=(value % 10)
+        if self.array[key].value!=None:    
+            print ("Yes Key=",self.array[key].key)
+        else:
+            print "No"
         
         
