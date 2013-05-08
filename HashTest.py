@@ -38,6 +38,34 @@ class Hash_table:
         if key==9:
             self.n9=Hash(value,key)
         return (self)
+    def search(self,value):
+        ch=float(value)/3
+        key=int(str(ch)[len(str(ch))-1:])
+        write=Hash(None,None)
+        if key==0:
+            write=self.n0
+        if key==1:
+            write=self.n1
+        if key==2:
+            write=self.n2
+        if key==3:
+            write=self.n3
+        if key==4:
+            write=self.n4
+        if key==5:
+            write=self.n5
+        if key==6:
+            write=self.n6
+        if key==7:
+            write=self.n7
+        if key==8:
+            write=self.n8
+        if key==9:
+            write=self.n9
+        if write.key==None:
+            print ("No")
+        else:
+            print ('Yes','key=',write.key)
 def Hashing(self,value):
     self=Hash(value)
     
