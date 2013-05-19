@@ -1,12 +1,3 @@
-
-#     1,2,3,4,5,6
-N = [[0,7,9,4,9,6], # 1
-     [7,0,4,3,2,6], # 2
-     [9,4,0,8,4,2], # 3
-     [4,3,8,0,6,4], # 4
-     [9,2,4,6,0,1], # 5
-     [6,6,2,4,1,0]] # 6
-     
 def printmatrix(N):
 	for i in range(len(N)):
 		print N[i]
@@ -33,6 +24,27 @@ def Floida(N):
 			for j in range(len(s)):
 				s[i][j]=min(int(s[i][j]),int((s[i][k])+(s[k][j])))
 	printmatrix(s)
+def fileimport():
+	f=open('textgraf.txt', 'r')
+	a=f.read()
+	i=[]
+	j=[]
+	n=0
+	while n< len(a):
+		if not(a[n]==',') and not (a[n]=="\n"):
+			i.append(int(a[n]))
+		elif (a[n]=="\n"):
+			j.append(i)
+			i=[]
+		n+=1
+	return(j)
+
+	
+		
+
+
+
+
 
 
 	
