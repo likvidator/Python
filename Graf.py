@@ -17,13 +17,13 @@ def printmatrix(N):
 # 				s[i]=d[n][i]
 # 		mark[n]=True
 # 	print s[b-1]
-def Floida(N):
+def Floida(N,a,b):
 	s=N
 	for k in range(len(s)):
 		for i in range(len(s)):
 			for j in range(len(s)):
 				s[i][j]=min(int(s[i][j]),int((s[i][k])+(s[k][j])))
-	printmatrix(s)
+	return s[a][b]
 def fileimport():
 	f=open('textgraf.txt', 'r')
 	a=f.read()
@@ -37,6 +37,7 @@ def fileimport():
 			j.append(i)
 			i=[]
 		n+=1
+
 	return(j)
 
 	
