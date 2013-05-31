@@ -1,7 +1,7 @@
 def printmatrix(N):
 	for i in range(len(N)):
 		print N[i]
-# def deykstra(N,node):N
+# def deykstra(N,node):
 # 		l = len(N)
 # 		if node > l  or node < 1:
 # 			print 'Error'
@@ -20,10 +20,10 @@ def printmatrix(N):
 # 						m = short_dist[j]
 # 						k = j
 # 				visited[k] = True
-#                 for j in range(l):
-#                     if N[k][j] != 0 and (N[k][j] + short_dist[k] < short_dist[j] or short_dist[j] == 0) and not visited[j]:
-#                         short_dist[j] = N[k][j] + short_dist[k]
-#             print short_dist
+# 				for j in range(l):
+# 					if N[k][j] != 0 and (N[k][j] + short_dist[k] < short_dist[j] or short_dist[j] == 0) and not visited[j]:
+# 						short_dist[j] = N[k][j] + short_dist[k]
+# 			print short_dist
 def Floida(N):
 	s=N
 	for k in range(len(s)):
@@ -31,27 +31,14 @@ def Floida(N):
 			for j in range(len(s)):
 				s[i][j]=min(int(s[i][j]),int((s[i][k])+(s[k][j])))
 	return s
-def fileimport():
-	f=open('textgraf.txt', 'r')
-	a=f.read()
-	i=[]
-	j=[]
-	n=0
-	s=''
-	while n< len(a):
-		if not(a[n]==',') and not (a[n]=="\n"):
-			#i.append(int(a[n]))
-			s+=str(a[n])
-		elif (a[n]==','):
-			i.append(int(s))
-			s=''
-		elif (a[n]=="\n"):
-			i.append(int(s))
-			j.append(i)
-			i=[]
-			s=''
-		n+=1
-	f.close()
+def fileimport(filename = "textgraf.txt"):
+	lines = open(filename).readlines()
+
+	def parse_line(line):
+		return map(int,line.split(','))
+	
+	j=map(parse_line,lines)
+
 	return(j)
 
 
