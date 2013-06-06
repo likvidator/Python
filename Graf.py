@@ -1,48 +1,50 @@
-def printmatrix(N):
-	for i in range(len(N)):
-		print N[i]
-# def deykstra(N,node):
-# 		l = len(N)
-# 		if node > l  or node < 1:
-# 			print 'Error'
-# 		else:
-# 			node -= 1
-# 			visited = []
-# 			short_dist =[]
-# 			for i in range(l):
-# 				short_dist += [N[node][i]]
-# 				visited += [False]
-# 			visited[node] = True
-# 			for i in range(l):
-# 				m = 0
-# 				for j in range(l):
-# 					if(0 < short_dist[j] < m or m == 0) and not visited[j]:
-# 						m = short_dist[j]
-# 						k = j
-# 				visited[k] = True
-# 				for j in range(l):
-# 					if N[k][j] != 0 and (N[k][j] + short_dist[k] < short_dist[j] or short_dist[j] == 0) and not visited[j]:
-# 						short_dist[j] = N[k][j] + short_dist[k]
-# 			print short_dist
+import numpy
+import sys
+
 def Floida(N):
 	s=N
+	l=len(s)
+	next=numpy.zeros((l,l),"int")
 	for k in range(len(s)):
 		for i in range(len(s)):
 			for j in range(len(s)):
-				s[i][j]=min(int(s[i][j]),int((s[i][k])+(s[k][j])))
-	return s
-def fileimport(filename = "textgraf.txt"):
+				if (int(s[i][k]) + int(s[k][j])) < int(s[i][j]): 
+					s[i][j] = (int(s[i][k]) + int(s[k][j]))
+					next[i][j] = i
+	return(s,next)
+def way(N,next,u, v):
+   if N[u][v] == 999:
+       raise NoPath
+   c = u
+   while c != v:
+     print c
+     c = next[c][v]
+   print v
+
+def fileimport(filename):
+	l=len(open(filename).readlines())
+	arr=numpy.zeros((l,l),"int")
 	lines = open(filename).readlines()
-
 	def parse_line(line):
-		return map(int,line.split(','))
-	
+		return map(int,line.split(' '))
 	j=map(parse_line,lines)
+	for i in range(len(j)):
+		for k in range(len(j)):
+			arr[i][k]=j[i][k]
 
-	return(j)
+	return(arr)
 
 
-def write_file(N):
+
+def write_matrix(N,filename):
+	f=open(filename,'w')
+	for i in range(len(N)):
+		f.write('\n')
+		for j in range(len(N)):
+			f.write(str(N[i][j]))
+			f.write(' ')
+
+def write_file_gr(N):
         f=open('Graf.txt','w')
         f.write("digraph G{ ")
         write_for_graphviz(f,N)
@@ -62,16 +64,10 @@ def write_for_graphviz(f,N):
 				f.write (str(N[i][j]))
 				f.write ("]")
 				f.write ('\n')
-
-	
-		
-
-
-
-
-
-
-	
+N=fileimport(sys.argv[1])
+b,z=Floida(N)
+write_matrix(b,sys.argv[2])
+write_matrix(z,sys.argv[3])
 
 	
 
