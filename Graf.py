@@ -11,10 +11,12 @@ def Floida(N):
 				if (int(s[i][k]) + int(s[k][j])) < int(s[i][j]): 
 					s[i][j] = (int(s[i][k]) + int(s[k][j]))
 					next[i][j] = k
-					print "Progres",
-					print i,
-					print " "
-					print j
+				print "Progres",
+				print k,
+				print " ",
+				print i,
+				print " ",
+				print j
 	return(s,next)
 def way(N,next,u, v):
    if N[u][v] == 999:
@@ -30,6 +32,7 @@ def way(N,next,u, v):
 def fileimport(filename):
 	s=open(filename, 'r').read()
 	l=len(open(filename).readlines())
+	les=len(s)
 	arr=numpy.zeros((l,l),"int")
 	v=''
 	n=0
@@ -49,9 +52,9 @@ def fileimport(filename):
 			j+=1		
 			v=''
 		n+=1
-		print "Read file",
-		print (n*100)/len(s)
+	print "Finish"
 	return(arr)
+	
 
 def write_matrix(N,filename):
 	f=open(filename,'w')
@@ -81,8 +84,7 @@ def write_for_graphviz(f,N):
 				f.write (str(N[i][j]))
 				f.write ("]")
 				f.write ('\n')
-N=fileimport(sys.argv[1])
-b,z=Floida(N)
-write_matrix(b,sys.argv[2])
-write_matrix(z,sys.argv[3])
-
+# N=fileimport(sys.argv[1])
+# b,z=Floida(N)
+# write_matrix(b,sys.argv[2])
+# write_matrix(z,sys.argv[3])
