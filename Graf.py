@@ -11,12 +11,16 @@ def Floida(N):
 				if (int(s[i][k]) + int(s[k][j])) < int(s[i][j]): 
 					s[i][j] = (int(s[i][k]) + int(s[k][j]))
 					next[i][j] = k
-				print "Progres",
+				# else next[i][j]=-1
 				print k,
 				print " ",
-				print i,
-				print " ",
-				print j
+				print i
+				# print "Progres",
+				# print k,
+				# print " ",
+				# print i,
+				# print " ",
+				# print j
 	return(s,next)
 def way(N,next,u, v):
    if N[u][v] == 999:
@@ -42,14 +46,19 @@ def fileimport(filename):
 		if not(s[n]==' ') and not (s[n]=="\n"):
 			v+=str(s[n])
 		elif (s[n]==' ') and not(s[n+1]=="\n"):
-			arr[j][i]=(int(v))
+			if int(v)==0:
+				arr[i][j]=999
+			else:
+				arr[j][i]=(int(v))
 			i+=1
-			v=''
+			 v=''
 		elif (s[n]=="\n"):
-			arr[j][i]=(int(v))
-			
+			if int(v)==0:
+				arr[i][j]=inf
+			else:
+				arr[j][i]=(int(v))
 			i=0
-			j+=1		
+			j+=1               
 			v=''
 		n+=1
 	print "Finish"
