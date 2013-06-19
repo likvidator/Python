@@ -1,6 +1,6 @@
 import numpy
 import sys
-
+inf=999
 def Floida(N):
 	s=N
 	l=len(s)
@@ -8,19 +8,20 @@ def Floida(N):
 	for k in range(len(s)):
 		for i in range(len(s)):
 			for j in range(len(s)):
-				if (int(s[i][k]) + int(s[k][j])) < int(s[i][j]): 
-					s[i][j] = (int(s[i][k]) + int(s[k][j]))
+				if ((s[i][k]) + (s[k][j])) < (s[i][j]): 
+					s[i][j] = ((s[i][k]) + (s[k][j]))
 					next[i][j] = k
-				# else next[i][j]=-1
-				print k,
-				print " ",
-				print i
-				# print "Progres",
+				else:
+					next[i][j]=-1
 				# print k,
 				# print " ",
-				# print i,
-				# print " ",
-				# print j
+				# print i
+				print "Progres",
+				print k,
+				print " ",
+				print i,
+				print " ",
+				print j
 	return(s,next)
 def way(N,next,u, v):
    if N[u][v] == 999:
@@ -35,7 +36,7 @@ def way(N,next,u, v):
 
 def fileimport(filename):
 	s=open(filename, 'r').read()
-	l=len(open(filename).readlines())
+	l=len((open(filename).readline()).split(" "))-1
 	les=len(s)
 	arr=numpy.zeros((l,l),"int")
 	v=''
@@ -47,11 +48,11 @@ def fileimport(filename):
 			v+=str(s[n])
 		elif (s[n]==' ') and not(s[n+1]=="\n"):
 			if int(v)==0:
-				arr[i][j]=999
+				arr[i][j]=inf
 			else:
 				arr[j][i]=(int(v))
 			i+=1
-			 v=''
+			v=''
 		elif (s[n]=="\n"):
 			if int(v)==0:
 				arr[i][j]=inf
