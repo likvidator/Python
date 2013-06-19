@@ -36,7 +36,7 @@ def way(N,next,u, v):
 
 def fileimport(filename):
 	s=open(filename, 'r').read()
-	l=len((open(filename).readline()).split(" "))-1
+	l=len((open(filename).readline()).split(" "))
 	les=len(s)
 	arr=numpy.zeros((l,l),"int")
 	v=''
@@ -48,14 +48,14 @@ def fileimport(filename):
 			v+=str(s[n])
 		elif (s[n]==' ') and not(s[n+1]=="\n"):
 			if int(v)==0:
-				arr[i][j]=inf
+				arr[j][i]=inf
 			else:
 				arr[j][i]=(int(v))
 			i+=1
 			v=''
 		elif (s[n]=="\n"):
 			if int(v)==0:
-				arr[i][j]=inf
+				arr[j][i]=inf
 			else:
 				arr[j][i]=(int(v))
 			i=0
